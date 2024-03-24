@@ -9,8 +9,13 @@ const createUser = async (userData) => {
   const user = await User.create(userData);
   return user;
 };
+const updateUser = async (id, userData) => {
+  const user = await User.findByIdAndUpdate(id, userData, { new: true });
 
+  return user;
+};
 module.exports = {
   getUser,
   createUser,
+  updateUser,
 };

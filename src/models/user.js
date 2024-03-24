@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const { Schema, model } = require("mongoose");
+Joi.objectId = require("joi-objectid")(Joi);
 
 const userSchema = new Schema(
   {
@@ -48,8 +49,18 @@ const userSigninShema = Joi.object({
   password: Joi.string().required(),
 });
 
+const userUpdateStatusSchema = Joi.object({
+  admin: Joi.boolean().required(),
+});
+
+const userIdSchema = Joi.object({
+  id: Joi.objectId().required(),
+});
+
 module.exports = {
   User,
   userSignupShema,
   userSigninShema,
+  userIdSchema,
+  userUpdateStatusSchema,
 };

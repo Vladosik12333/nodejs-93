@@ -1,6 +1,6 @@
-const wrapper = (ctrl) => (req, res, next) => {
+const wrapper = (ctrl) => async (req, res, next) => {
   try {
-    ctrl(req, res);
+    await ctrl(req, res);
   } catch (error) {
     next(error);
   }

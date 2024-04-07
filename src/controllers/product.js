@@ -7,6 +7,14 @@ const getProducts = async (_, res) => {
   });
 };
 
+const createProduct = async (req, res) => {
+  const product = await services.createProduct(req.body, req.user._id);
+  res.json({
+    product,
+  });
+};
+
 module.exports = {
   getProducts,
+  createProduct,
 };

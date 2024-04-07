@@ -5,6 +5,12 @@ const getProducts = async () => {
   return products;
 };
 
+const createProduct = async (productData) => {
+  const product = await Product.create(productData);
+  return product;
+};
+
 module.exports = {
   getProducts,
+  createProduct,
 };

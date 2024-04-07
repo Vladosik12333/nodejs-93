@@ -41,7 +41,6 @@ const userSignupShema = Joi.object({
   phone: Joi.number(),
   birthdate: Joi.date().required(),
   password: Joi.string().required(),
-  admin: Joi.boolean(),
 });
 
 const userSigninShema = Joi.object({

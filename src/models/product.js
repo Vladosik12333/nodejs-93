@@ -1,4 +1,6 @@
+const Joi = require("joi");
 const { Schema, model } = require("mongoose");
+Joi.objectId = require("joi-objectid")(Joi);
 
 const productSchema = new Schema(
   {
@@ -53,6 +55,20 @@ const productSchema = new Schema(
 
 const Product = model("product", productSchema);
 
+const productCreateSchema = Joi.object({
+  name: Joi.string().required(),
+  description: Joi.string(),
+  price: Joi.number().required(),
+  image: Joi.string(),
+  stock: Joi.number().required(),
+  size: Joi.string().valid("S", "M", "L", "XL"),
+  popularity: Joi.number(),
+  promo: Joi.boolean(),
+  discount: Joi.number(),
+  producedAt: Joi.date(),
+});
+
 module.exports = {
   Product,
+  productCreateSchema,
 };
